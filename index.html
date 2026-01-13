@@ -2,26 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Birthday App 🎂</title>
+  <title>Birthday App </title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
-  <div class="card">
-    <h2>Birthday App</h2>
+  <div class="card" id="authScreen">
+    <h2> 🎂 Birthday App 🍰 </h2>
 
     <input type="text" id="name" placeholder="Name">
     <input type="date" id="dob">
     <input type="email" id="email" placeholder="Email">
     <input type="password" id="password" placeholder="Password">
+   
 
-    <button class="signup" id="signup">Sign Up</button>
-    <button class="login" id="login">Login</button>
-    <button class="logout" id="logout">Logout</button>
 
-    <div id="result"></div>
+  <button class="signup" id="signup">Sign Up</button>
+  <button class="login" id="login">Login</button>
+
+  <div class="error" id="error" style="display: none;">
+  Please fill all fields
+</div>
+  <div class="errorLogin" id="errorLogin" style="display: none;">
+  Please fill email and password
+</div>
+  <div class="logout" id="logoutmessage" style="display: none;">
+  User logged out successfully!
+</div>
   </div>
 
+
+  <div id="appScreen" style="display:none">
+    <div id="result"></div>
+    <button class="logout" id="logout">Logout</button>
+      <div class="singup" id="singupmessage" style="display: none;">
+  User registered successfully!
+</div>
+      <div class="login" id="loginmessage" style="display: none;">
+  User login successfully!
+</div>
+
+
+</div>
   <script type="module" src="app.js"></script>
 </body>
 </html>

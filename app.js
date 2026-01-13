@@ -24,6 +24,8 @@ const errorLogin = document.getElementById("errorLogin");
 const LogoutDiv = document.getElementById("logoutmessage");
 const SingUpDiv = document.getElementById("singupmessage");
 const LoginDiv = document.getElementById("loginmessage");
+const signupSuccess = document.getElementById("signupSuccess");
+
 
 const signupBtn = document.getElementById("signup");
 const loginBtn = document.getElementById("login");
@@ -77,14 +79,8 @@ signupBtn?.addEventListener("click", (e) => {
       });
     })
     .then(() => {
-      showAppScreen();
+      signupSuccess.style.display = "block";
 
-      SingUpDiv.textContent = "User registered successfully!";
-      SingUpDiv.style.display = "block";
-
-      setTimeout(() => {
-        SingUpDiv.style.display = "none";
-      }, 5000);
     })
     .catch((err) => {
       console.log(err.message);

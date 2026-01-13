@@ -80,6 +80,9 @@ signupBtn?.addEventListener("click", (e) => {
     })
     .then(() => {
       signupSuccess.style.display = "block";
+      setTimeout(() => {
+        signupSuccess.style.display = "none"
+      }, 9000);
 
     })
     .catch((err) => {

@@ -17,21 +17,49 @@ import {
 //DOM elements
 const nameInput = document.getElementById("name");
 const dobInput = document.getElementById("dob");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
+
+const emailSignup = document.getElementById("emailSignup");
+const passwordSignup = document.getElementById("passwordSignup");
+
+const emailLogin = document.getElementById("emailLogin");
+const passwordLogin = document.getElementById("passwordLogin");
+
+const signupForm = document.getElementById("signupForm");
+const loginForm = document.getElementById("loginForm");
+const toggleForm = document.getElementById("toggleForm");
+
 const error = document.getElementById("error");
 const errorLogin = document.getElementById("errorLogin");
 const LogoutDiv = document.getElementById("logoutmessage");
-const SingUpDiv = document.getElementById("singupmessage");
 const LoginDiv = document.getElementById("loginmessage");
 const signupSuccess = document.getElementById("signupSuccess");
-
 
 const signupBtn = document.getElementById("signup");
 const loginBtn = document.getElementById("login");
 const logoutBtn = document.getElementById("logout");
 
 const resultDiv = document.getElementById("result");
+
+
+//forms manipulations
+
+
+let isSignup = true;
+
+toggleForm.addEventListener("click", function() {
+  isSignup = !isSignup;
+
+  if (isSignup) {
+    signupForm.style.display = "block";
+    loginForm.style.display = "none";
+    toggleForm.textContent = "Already have an account? Login";
+  } else {
+    signupForm.style.display = "none";
+    loginForm.style.display = "block";
+    toggleForm.textContent = "Don't have an account? Sign Up";
+  }
+});
+
 
 //screens manipulations
 const authScreen = document.getElementById("authScreen");
@@ -48,7 +76,7 @@ function showAppScreen() {
 }
 
 //SingUp
-signupBtn?.addEventListener("click", (e) => {
+signupForm?.addEventListener("submit", (e) => {
   e.preventDefault();
 
   error.style.display = "none";
@@ -57,14 +85,15 @@ signupBtn?.addEventListener("click", (e) => {
   // read inputs
   const name = nameInput.value;
   const dob = dobInput.value;
-  const email = emailInput.value;
-  const password = passwordInput.value;
+  const email = emailSignup.value;
+  const password = passwordSignup.value;
+
 
   const isFilled = name && dob && email && password;
   if (!isFilled) {
     error.style.display = "block";
     return;
-  } 
+  }
   // create user in Firebase
 
   createUserWithEmailAndPassword(auth, email, password)
@@ -81,9 +110,8 @@ signupBtn?.addEventListener("click", (e) => {
     .then(() => {
       signupSuccess.style.display = "block";
       setTimeout(() => {
-        signupSuccess.style.display = "none"
-      }, 9000);
-
+        signupSuccess.style.display = "none";
+      }, 5000);
     })
     .catch((err) => {
       console.log(err.message);
@@ -91,14 +119,15 @@ signupBtn?.addEventListener("click", (e) => {
 });
 
 // Login
-loginBtn?.addEventListener("click", (e) => {
+loginForm?.addEventListener("submit", (e) => {
   e.preventDefault();
-
+  
   error.style.display = "none";
   errorLogin.style.display = "none";
 
-  const email = emailInput.value;
-  const password = passwordInput.value;
+  const email = emailLogin.value;
+  const password = passwordLogin.value;
+
 
   const isFilledLogin = email && password;
   if (!isFilledLogin) {
@@ -192,7 +221,7 @@ function checkBirthday(userData) {
 
 function daysUntilBirthday(dobStr) {
   const today = new Date();
-  const [year, month, day] = dobStr.split("-").map(Number);     //  "2026-01-12" > ["2026","01","12"]  > [2026,1,12] 
+  const [year, month, day] = dobStr.split("-").map(Number); //  "2026-01-12" > ["2026","01","12"]  > [2026,1,12]
 
   // BD this year
   let birthdayThisYear = new Date(today.getFullYear(), month - 1, day);

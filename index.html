@@ -11,28 +11,37 @@
   <div class="card" id="authScreen">
     <h2> 🎂 Birthday App 🍰 </h2>
 
-  <div class="signupSuccess" id="signupSuccess" style="display: none;">
-    ⚠️ You have successfully signed up! <br>  
-    You can now log in using your credentials.
-  </div>
-
+  <!-- SIGN UP FORM -->
+  <form id="signupForm">
     <input type="text" id="name" placeholder="Name">
     <input type="date" id="dob">
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-   
-
-
-  <button class="signup" id="signup">Sign Up</button>
-  <button class="login" id="login">Login</button>
-
-  <div class="error" id="error" style="display: none;">
+    <input type="email" id="emailSignup" placeholder="Email">
+    <input type="password" id="passwordSignup" placeholder="Password">
+    <button class="signup" id="signup">Sign Up</button>
+    <div class="message error" id="error" style="display: none;">
   Please fill all fields
 </div>
-  <div class="errorLogin" id="errorLogin" style="display: none;">
+    <div class="message success" id="signupSuccess" style="display: none;">
+  User registered successfully!
+</div>
+  </form>
+
+  <!-- LOGIN FORM -->
+  <form id="loginForm" style="display:none">
+    <input type="email" id="emailLogin" placeholder="Email">
+    <input type="password" id="passwordLogin" placeholder="Password">
+    <button class="login" id="login">Login</button>
+      <div class="message error" id="errorLogin" style="display: none;">
   Please fill email and password
 </div>
-  <div class="logout" id="logoutmessage" style="display: none;">
+  </form>
+
+  <p id="toggleForm" style="cursor:pointer; color:rgb(21, 63, 230);">
+    Already have an account? Login
+  </p>
+
+
+  <div class="message success" id="logoutmessage" style="display: none;">
   User logged out successfully!
 </div>
   </div>
@@ -41,10 +50,8 @@
   <div id="appScreen" style="display:none">
     <div id="result"></div>
     <button class="logout" id="logout">Logout</button>
-      <div class="singup" id="singupmessage" style="display: none;">
-  User registered successfully!
-</div>
-      <div class="login" id="loginmessage" style="display: none;">
+
+    <div class="message success" id="loginmessage" style="display: none;">
   User login successfully!
 </div>
 

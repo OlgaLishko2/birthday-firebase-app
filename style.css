@@ -25,26 +25,7 @@ body {
   text-align: center;
   transition: transform 0.3s ease;
 }
-#error{
-  color: red;
-    text-align: center;
-}
-#errorLogin{
-  color: red;
-    text-align: center;
-}
-#logoutmessage{
-  color: red;
-    text-align: center;
-}
-#singupmessage{
-  color: rgb(6, 105, 11);
-    text-align: center;
-}
-#loginmessage{
-  color: rgb(6, 105, 11);
-   text-align: center;
-}
+
 .card:hover {
   transform: translateY(-5px);
 }
@@ -114,12 +95,24 @@ line-height: 2;
 }
 
 
-.signupSuccess {
-  background-color: white;
-  color: #38a169;
-  padding: 12px;
-  margin-bottom: 20px;
-  border-radius: 80px;
+.message {
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin-top: 10px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;      
+  font-size: 14px;       
+  display: none;
+}
+
+
+.message.success {
+  background-color: #e6f4ea; 
+  color: #2e7d32;             
+}
+
+
+.message.error {
+  background-color: #fdecea;  
+  color: #c62828;            
 }
